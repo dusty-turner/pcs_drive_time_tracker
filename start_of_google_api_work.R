@@ -42,3 +42,6 @@ system("git pull")
 system("git add .")
 system(str_c("git commit -m \"commit at ", lubridate::now(), "\""))
 system("git push")
+
+install.packages("installr")
+installr::install.pandoc()
