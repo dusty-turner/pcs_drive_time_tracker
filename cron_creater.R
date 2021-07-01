@@ -9,10 +9,19 @@ cmd <- cron_rscript(normalizePath("start_of_google_api_work.R"), workdir = "/hom
 cmd
 
 cron_add(command = cmd, 
-         frequency = '*/1 * * * *', 
+         frequency = '0,30 0-5,9-15,18-23 * * *', 
+         # frequency = '*/1 * * * *', 
          # frequency = '*/10 * * * *', 
-         id = 'drive_time_getter', 
-         description = 'gets_multiple_drive_times', 
+         id = 'drive_time_getter_off_peak', 
+         description = 'gets_multiple_drive_times_off_peak'
+         )
+
+cron_add(command = cmd, 
+         frequency = '*/5 5-9,15-18 * * *', 
+         # frequency = '*/1 * * * *', 
+         # frequency = '*/10 * * * *', 
+         id = 'drive_time_getter_peak', 
+         description = 'gets_multiple_drive_times_peak', 
          tags = c('lab', 'xyz')
          )
 
