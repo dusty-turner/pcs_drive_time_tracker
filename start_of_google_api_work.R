@@ -36,3 +36,6 @@ old_results %>%
 
 
 rmarkdown::render("/home/ubuntu/Projects/pcs_drive_time_tracker/publish/Publish_script.Rmd")
+
+
+shell("/home/ubuntu/Projects/pcs_drive_time_tracker/source_files/shell1.sh")
