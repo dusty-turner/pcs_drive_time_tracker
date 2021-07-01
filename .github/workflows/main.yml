@@ -16,6 +16,7 @@ jobs:
       with:
         source_file: 'publish/Publish_script.html'
         destination_repo: 'dusty-turner/blog-reboot'
+        destination_branch: 'master'
         destination_folder: 'static'
         user_email: 'dusty.s.turner@gmail.com'
         user_name: 'dusty-turner'
