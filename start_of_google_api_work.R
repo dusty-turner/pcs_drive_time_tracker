@@ -35,3 +35,4 @@ old_results %>%
   write_csv("/home/ubuntu/Projects/pcs_drive_time_tracker/results/results.csv")
 
 
+rmarkdown::render("/home/ubuntu/Projects/pcs_drive_time_tracker/publish/Publish_script.Rmd")

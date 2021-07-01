@@ -11,10 +11,11 @@ knitr::opts_chunk$set(echo = TRUE, warning = F, message = F, include = F)
 
 ```{r}
 library(tidyverse)
-source(normalizePath("source_files/drive_time_source.R"))
+source("../source_files/drive_time_source.R")
+# source(normalizePath("source_files/drive_time_source.R"))
 
 clean_data <-
-read_csv(normalizePath("results/results.csv")) %>% 
+read_csv(normalizePath("../results/results.csv")) %>% 
   left_join(starts, by = "origin")  %>% 
   left_join(ends, by = "destination") %>% 
   left_join(routes) %>% 
