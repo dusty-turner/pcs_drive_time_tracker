@@ -37,5 +37,8 @@ old_results %>%
 
 rmarkdown::render("/home/ubuntu/Projects/pcs_drive_time_tracker/publish/Publish_script.Rmd")
 
-
-shell("/home/ubuntu/Projects/pcs_drive_time_tracker/source_files/shell1.sh")
+system("git status")
+system("git pull")
+system("git add .")
+system(str_c("git commit -m \"commit at ", lubridate::now(), "\""))
+system("git push")
