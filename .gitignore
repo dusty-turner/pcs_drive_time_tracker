@@ -1,3 +1,7 @@
+results*
+*.log
+*drive_time_source.R
+
 # History files
 .Rhistory
 .Rapp.history

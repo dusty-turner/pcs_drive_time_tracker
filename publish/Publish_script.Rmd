@@ -1,0 +1,35 @@
+---
+title: "Drive Time Explorer"
+author: "Dusty Turner"
+date: "7/1/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F, include = F)
+```
+
+```{r}
+library(tidyverse)
+source(normalizePath("source_files/drive_time_source.R"))
+
+clean_data <-
+read_csv(normalizePath("results/results.csv")) %>% 
+  left_join(starts, by = "origin")  %>% 
+  left_join(ends, by = "destination") %>% 
+  left_join(routes) %>% 
+  mutate(search_time = lubridate::with_tz(time = search_time, tzone = "America/New_York")) 
+
+```
+
+
+```{r echo=TRUE, include = T}
+
+clean_data %>% 
+
+  ggplot(aes(x = search_time, y = time)) +
+  geom_point() +
+  facet_wrap(~route_list, scales = "free_x")
+  
+```
+
