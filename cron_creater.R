@@ -5,7 +5,8 @@ cmd <- cron_rscript(normalizePath("start_of_google_api_work.R"))
 cmd
 
 cron_add(command = cmd, 
-         frequency = '*/10 * * * *', 
+         frequency = '*/1 * * * *', 
+         # frequency = '*/10 * * * *', 
          id = 'drive_time_getter', 
          description = 'gets_multiple_drive_times', 
          tags = c('lab', 'xyz')
