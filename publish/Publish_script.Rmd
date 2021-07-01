@@ -15,7 +15,8 @@ source("../source_files/drive_time_source.R")
 # source(normalizePath("source_files/drive_time_source.R"))
 
 clean_data <-
-read_csv(normalizePath("../results/results.csv")) %>% 
+read_csv(normalizePath("../results/results.csv")) %>%
+# read_csv("results/results.csv") %>% 
   left_join(starts, by = "origin")  %>% 
   left_join(ends, by = "destination") %>% 
   left_join(routes) %>% 
@@ -32,5 +33,35 @@ clean_data %>%
   geom_point() +
   facet_wrap(~route_list, scales = "free_x")
   
+```
+
+
+```{r, cache=TRUE, echo=TRUE, include = T}
+library(leaflet)
+library(googleway)
+
+mydf <- data.frame(region = 1:3,
+                   from_lat = 41.8674336,
+                   from_long = -87.6266382,
+                   to_lat = c(41.887544, 41.9168862, 41.8190937),
+                   to_long = c(-87.626487, -87.64847, -87.6230967))
+
+mykey <- key
+
+foo <- google_directions(origin = "Woodway, TX", destination = "Center Point, TX", mode = "driving", key = key)
+
+pl <- decode_pl(foo$routes$overview_polyline$points)
+
+# bind_rows(.id = "region") -> temp
+
+
+leaflet() %>%
+     addProviderTiles("OpenStreetMap.Mapnik") %>%
+     addPolylines(data = pl, lng = ~lon, lat = ~lat) %>%
+     # addPolylines(data = pl, lng = ~lon, lat = ~lat, group = ~region) %>%
+     addMarkers(lng = pl$lon[1], lat = pl$lat[1],
+                popup = "Origin")  %>% 
+     addMarkers(lng = pl$lon[length(pl$lon)], lat = pl$lat[length(pl$lat)],
+                popup = "Destination")  
 ```
 
