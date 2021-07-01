@@ -1,7 +1,11 @@
 library(cronR)
 
+cron_ls()
+cron_clear(ask=FALSE)
+
 f <- system.file(normalizePath("start_of_google_api_work.R"))
-cmd <- cron_rscript(normalizePath("start_of_google_api_work.R"))
+cmd <- cron_rscript(normalizePath("start_of_google_api_work.R"), workdir = "/home/ubuntu/Projects/pcs_drive_time_tracker/")
+# cmd <- cron_rscript(normalizePath("start_of_google_api_work.R"), workdir = normalizePath("~"))
 cmd
 
 cron_add(command = cmd, 

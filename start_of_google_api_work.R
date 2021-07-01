@@ -37,7 +37,9 @@ old_results %>%
 
 rmarkdown::render("/home/ubuntu/Projects/pcs_drive_time_tracker/publish/Publish_script.Rmd")
 
+system("pwd")
 system("cd /home/ubuntu/Projects/pcs_drive_time_tracker/")
+system("pwd")
 system("git status")
 system("git pull")
 system("git add .")
