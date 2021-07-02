@@ -31,7 +31,7 @@ clean_data %>%
 
   ggplot(aes(x = search_time, y = time)) +
   geom_point() +
-  facet_wrap(~route_list, scales = "free_x")
+  facet_wrap(~route_list, scales = "free")
   
 ```
 
